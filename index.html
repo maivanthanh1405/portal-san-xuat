@@ -37,9 +37,8 @@
         .spatial-card:hover {
             background: rgba(15, 20, 30, 0.95);
             border-color: rgba(255, 255, 255, 0.25);
-            transform: translateY(-10px);
-            /* Đổi bóng đổ thành tỏa đều 4 hướng (0 0 60px) để hợp với ánh sáng 2 góc */
-            box-shadow: 0 0 60px rgba(0, 0, 0, 0.8);
+            transform: translateY(-8px);
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
         }
 
         /* Nhuộm đen thanh cuộn */
@@ -52,11 +51,11 @@
         ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.3); }
 
         /* Hiệu ứng hào quang cho Icon */
-        .icon-glow-cyan { filter: drop-shadow(0 0 12px rgba(34, 211, 238, 0.6)); }
-        .icon-glow-amber { filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.6)); }
-        .icon-glow-emerald { filter: drop-shadow(0 0 12px rgba(52, 211, 153, 0.6)); }
-        .icon-glow-fuchsia { filter: drop-shadow(0 0 12px rgba(232, 121, 249, 0.6)); }
-        .icon-glow-blue { filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.6)); }
+        .icon-glow-cyan { filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.6)); }
+        .icon-glow-amber { filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.6)); }
+        .icon-glow-emerald { filter: drop-shadow(0 0 10px rgba(52, 211, 153, 0.6)); }
+        .icon-glow-fuchsia { filter: drop-shadow(0 0 10px rgba(232, 121, 249, 0.6)); }
+        .icon-glow-blue { filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.6)); }
     </style>
 </head>
 <body class="min-h-screen bg-[#010205] text-slate-200 font-sans relative overflow-x-hidden selection:bg-white/10 flex flex-col">
@@ -71,135 +70,130 @@
         <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]"></div>
     </div>
 
-    <div class="relative z-10 max-w-[1400px] mx-auto px-6 md:px-12 flex flex-col min-h-screen w-full">
+    <div class="relative z-10 max-w-[1200px] mx-auto px-6 md:px-12 flex flex-col min-h-screen w-full">
         
-        <!-- 2. TOP BAR -->
-        <header class="py-8 flex justify-between items-center w-full mb-4 animate-in fade-in slide-in-top">
-            <div class="flex items-center gap-4 group cursor-pointer">
-                <div class="w-11 h-11 rounded-full bg-white/[0.05] border border-white/[0.1] flex items-center justify-center group-hover:bg-white/[0.1] transition-all shadow-[0_0_20px_rgba(255,255,255,0.05)]">
-                    <i data-lucide="waves" class="w-6 h-6 text-white"></i>
+        <!-- 2. TOP BAR (Thu nhỏ padding) -->
+        <header class="py-6 flex justify-between items-center w-full mb-2 animate-in fade-in slide-in-top">
+            <div class="flex items-center gap-3 group cursor-pointer">
+                <div class="w-10 h-10 rounded-full bg-white/[0.05] border border-white/[0.1] flex items-center justify-center group-hover:bg-white/[0.1] transition-all shadow-[0_0_20px_rgba(255,255,255,0.05)]">
+                    <i data-lucide="waves" class="w-5 h-5 text-white"></i>
                 </div>
                 <div>
                     <h1 class="text-sm font-black tracking-[0.25em] text-white uppercase leading-none">Ngành Trung Thế</h1>
-                    <p class="text-[10px] font-mono text-blue-400 font-bold tracking-widest uppercase mt-1.5">Hệ Thống File</p>
+                    <p class="text-[10px] font-mono text-blue-400 font-bold tracking-widest uppercase mt-1">Hệ Thống File</p>
                 </div>
             </div>
             
-            <div class="flex items-center gap-4 bg-white/[0.03] border border-white/[0.1] rounded-full px-5 py-2.5 backdrop-blur-xl">
-                <div class="flex items-center gap-2.5">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,1)] animate-pulse"></span>
-                    <span class="text-[11px] text-white font-bold font-mono tracking-wider uppercase">ONLINE</span>
+            <div class="flex items-center gap-4 bg-white/[0.03] border border-white/[0.1] rounded-full px-4 py-2 backdrop-blur-xl">
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,1)] animate-pulse"></span>
+                    <span class="text-[10px] text-white font-bold font-mono tracking-wider uppercase">ONLINE</span>
                 </div>
-                <div class="w-px h-4 bg-white/20 hidden sm:block"></div>
-                <div class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hidden sm:flex">
-                    <i data-lucide="fingerprint" class="w-4 h-4 text-slate-300"></i>
+                <div class="w-px h-3 bg-white/20 hidden sm:block"></div>
+                <div class="w-7 h-7 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hidden sm:flex">
+                    <i data-lucide="fingerprint" class="w-3.5 h-3.5 text-slate-300"></i>
                 </div>
             </div>
         </header>
 
-        <main class="flex-1 flex flex-col justify-center pb-20 pt-4">
+        <main class="flex-1 flex flex-col justify-center pb-10 pt-2">
             
-            <!-- 3. HERO SECTION -->
-            <div class="text-center mb-16 animate-in fade-in slide-in-bottom" style="animation-delay: 200ms;">
-                <h2 id="greeting-text" class="text-5xl md:text-6xl lg:text-8xl font-black text-white tracking-tighter mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
+            <!-- 3. HERO SECTION (Thu nhỏ cỡ chữ và khoảng cách) -->
+            <div class="text-center mb-10 animate-in fade-in slide-in-bottom" style="animation-delay: 200ms;">
+                <h2 id="greeting-text" class="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tighter mb-4 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
                     <!-- JS sẽ tự động điền -->
                 </h2>
-                <p class="text-xl md:text-2xl text-slate-300 font-light tracking-wide max-w-3xl mx-auto opacity-90 leading-relaxed">
+                <p class="text-base md:text-lg text-slate-300 font-light tracking-wide max-w-2xl mx-auto opacity-90 leading-relaxed">
                     Không gian quản lý biểu nhập liệu và hướng dẫn sản xuất của ngành.
                 </p>
             </div>
 
-            <!-- 4. LƯỚI 4 CỔNG TRUY CẬP (Màu sắc sống động hơn) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl mx-auto animate-in fade-in slide-in-bottom" style="animation-delay: 400ms;">
+            <!-- 4. LƯỚI 5 CỔNG TRUY CẬP (Thu gọn gap và padding thẻ) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 w-full max-w-5xl mx-auto animate-in fade-in slide-in-bottom" style="animation-delay: 400ms;">
                 
                 <!-- CỔNG 1: BIỂU NHẬP LIỆU KÉO XOẮN -->
-                <a href="https://docs.google.com/spreadsheets/d/1x9RWzuJ_pX-DptP_MDOa5h0dRLjsNWXgPlimsByF71w/edit?usp=sharing" target="_blank" class="spatial-card group p-10 md:p-12 rounded-[3.5rem] relative overflow-hidden">
-                    <div class="absolute top-0 right-0 p-12 opacity-20 group-hover:opacity-100 group-hover:translate-x-2 group-hover:-translate-y-2 transition-all duration-500 z-20">
-                        <i data-lucide="arrow-up-right" class="w-10 h-10 text-cyan-400"></i>
+                <a href="https://docs.google.com/spreadsheets/d/1x9RWzuJ_pX-DptP_MDOa5h0dRLjsNWXgPlimsByF71w/edit?usp=sharing" target="_blank" class="spatial-card group p-6 md:p-8 rounded-[2rem] relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-500 z-20">
+                        <i data-lucide="arrow-up-right" class="w-6 h-6 text-cyan-400"></i>
                     </div>
                     
-                    <!-- Vệt sáng Góc dưới phải -->
-                    <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-cyan-500/20 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
-                    <!-- Vệt sáng Góc trên trái -->
-                    <div class="absolute -top-20 -left-20 w-64 h-64 bg-cyan-500/20 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
+                    <!-- Vệt sáng -->
+                    <div class="absolute -bottom-16 -right-16 w-48 h-48 bg-cyan-500/20 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
+                    <div class="absolute -top-16 -left-16 w-48 h-48 bg-cyan-500/20 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
                     
-                    <div class="relative z-10 w-20 h-20 rounded-[2rem] bg-cyan-500/20 border border-cyan-400/30 flex items-center justify-center mb-10 group-hover:scale-110 transition-transform duration-700 shadow-[inset_0_0_20px_rgba(34,211,238,0.2)]">
-                        <i data-lucide="database" class="w-10 h-10 text-cyan-400 icon-glow-cyan"></i>
+                    <div class="relative z-10 w-14 h-14 rounded-2xl bg-cyan-500/20 border border-cyan-400/30 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-700 shadow-[inset_0_0_20px_rgba(34,211,238,0.2)]">
+                        <i data-lucide="database" class="w-7 h-7 text-cyan-400 icon-glow-cyan"></i>
                     </div>
-                    <h3 class="relative z-10 text-3xl font-bold text-white mb-4 tracking-wide group-hover:text-cyan-400 transition-colors">BIỂU NHẬP LIỆU KÉO XOẮN</h3>
-                    <p class="relative z-10 text-slate-400 font-normal text-lg leading-relaxed group-hover:text-white transition-colors">Truy cập nhanh các biểu ghi nhận dữ liệu và sản lượng kéo xoắn.</p>
+                    <h3 class="relative z-10 text-xl font-bold text-white mb-2 tracking-wide group-hover:text-cyan-400 transition-colors">BIỂU NHẬP LIỆU KÉO XOẮN</h3>
+                    <p class="relative z-10 text-slate-400 font-normal text-sm leading-relaxed group-hover:text-white transition-colors">Truy cập nhanh các biểu ghi nhận dữ liệu và sản lượng kéo xoắn.</p>
                 </a>
 
                 <!-- CỔNG 2: BIỂU NHẬP LIỆU BỌC -->
-                <a href="https://docs.google.com/spreadsheets/d/173-VOqYWRt1a_AZ6ZKgBCsoieQhEJaAOTT6XWW1Xibk/edit?usp=sharing" target="_blank" class="spatial-card group p-10 md:p-12 rounded-[3.5rem] relative overflow-hidden">
-                    <div class="absolute top-0 right-0 p-12 opacity-20 group-hover:opacity-100 group-hover:translate-x-2 group-hover:-translate-y-2 transition-all duration-500 z-20">
-                        <i data-lucide="arrow-up-right" class="w-10 h-10 text-amber-500"></i>
+                <a href="https://docs.google.com/spreadsheets/d/173-VOqYWRt1a_AZ6ZKgBCsoieQhEJaAOTT6XWW1Xibk/edit?usp=sharing" target="_blank" class="spatial-card group p-6 md:p-8 rounded-[2rem] relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-500 z-20">
+                        <i data-lucide="arrow-up-right" class="w-6 h-6 text-amber-500"></i>
                     </div>
                     
-                    <!-- Vệt sáng Góc dưới phải -->
-                    <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-amber-500/20 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
-                    <!-- Vệt sáng Góc trên trái -->
-                    <div class="absolute -top-20 -left-20 w-64 h-64 bg-amber-500/20 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
+                    <!-- Vệt sáng -->
+                    <div class="absolute -bottom-16 -right-16 w-48 h-48 bg-amber-500/20 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
+                    <div class="absolute -top-16 -left-16 w-48 h-48 bg-amber-500/20 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
 
-                    <div class="relative z-10 w-20 h-20 rounded-[2rem] bg-amber-500/20 border border-amber-400/30 flex items-center justify-center mb-10 group-hover:scale-110 transition-transform duration-700 shadow-[inset_0_0_20px_rgba(245,158,11,0.2)]">
-                        <i data-lucide="file-bar-chart" class="w-10 h-10 text-amber-500 icon-glow-amber"></i>
+                    <div class="relative z-10 w-14 h-14 rounded-2xl bg-amber-500/20 border border-amber-400/30 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-700 shadow-[inset_0_0_20px_rgba(245,158,11,0.2)]">
+                        <i data-lucide="file-bar-chart" class="w-7 h-7 text-amber-500 icon-glow-amber"></i>
                     </div>
-                    <h3 class="relative z-10 text-3xl font-bold text-white mb-4 tracking-wide group-hover:text-amber-500 transition-colors">BIỂU NHẬP LIỆU BỌC</h3>
-                    <p class="relative z-10 text-slate-400 font-normal text-lg leading-relaxed group-hover:text-white transition-colors">Truy cập nhanh các biểu ghi nhận dữ liệu và sản lượng bọc.</p>
+                    <h3 class="relative z-10 text-xl font-bold text-white mb-2 tracking-wide group-hover:text-amber-500 transition-colors">BIỂU NHẬP LIỆU BỌC</h3>
+                    <p class="relative z-10 text-slate-400 font-normal text-sm leading-relaxed group-hover:text-white transition-colors">Truy cập nhanh các biểu ghi nhận dữ liệu và sản lượng bọc.</p>
                 </a>
 
                 <!-- CỔNG 3: BIỂU NHẬP LIỆU CCVL -->
-                <a href="https://docs.google.com/spreadsheets/d/1pY_dUEmiuWnaArQ4K0h7gsxyR-3QlNynWUf03fgkkwY/edit?usp=sharing" target="_blank" class="spatial-card group p-10 md:p-12 rounded-[3.5rem] relative overflow-hidden">
-                    <div class="absolute top-0 right-0 p-12 opacity-20 group-hover:opacity-100 group-hover:translate-x-2 group-hover:-translate-y-2 transition-all duration-500 z-20">
-                        <i data-lucide="arrow-up-right" class="w-10 h-10 text-emerald-400"></i>
+                <a href="https://docs.google.com/spreadsheets/d/1pY_dUEmiuWnaArQ4K0h7gsxyR-3QlNynWUf03fgkkwY/edit?usp=sharing" target="_blank" class="spatial-card group p-6 md:p-8 rounded-[2rem] relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-500 z-20">
+                        <i data-lucide="arrow-up-right" class="w-6 h-6 text-emerald-400"></i>
                     </div>
                     
-                    <!-- Vệt sáng Góc dưới phải -->
-                    <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-emerald-500/20 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
-                    <!-- Vệt sáng Góc trên trái -->
-                    <div class="absolute -top-20 -left-20 w-64 h-64 bg-emerald-500/20 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
+                    <!-- Vệt sáng -->
+                    <div class="absolute -bottom-16 -right-16 w-48 h-48 bg-emerald-500/20 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
+                    <div class="absolute -top-16 -left-16 w-48 h-48 bg-emerald-500/20 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
 
-                    <div class="relative z-10 w-20 h-20 rounded-[2rem] bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center mb-10 group-hover:scale-110 transition-transform duration-700 shadow-[inset_0_0_20px_rgba(52,211,153,0.2)]">
-                        <i data-lucide="shield-check" class="w-10 h-10 text-emerald-400 icon-glow-emerald"></i>
+                    <div class="relative z-10 w-14 h-14 rounded-2xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-700 shadow-[inset_0_0_20px_rgba(52,211,153,0.2)]">
+                        <i data-lucide="shield-check" class="w-7 h-7 text-emerald-400 icon-glow-emerald"></i>
                     </div>
-                    <h3 class="relative z-10 text-3xl font-bold text-white mb-4 tracking-wide group-hover:text-emerald-400 transition-colors">BIỂU NHẬP LIỆU CCVL</h3>
-                    <p class="relative z-10 text-slate-400 font-normal text-lg leading-relaxed group-hover:text-white transition-colors">Truy cập nhanh các biểu ghi nhận dữ liệu và sản lượng CCVL.</p>
+                    <h3 class="relative z-10 text-xl font-bold text-white mb-2 tracking-wide group-hover:text-emerald-400 transition-colors">BIỂU NHẬP LIỆU CCVL</h3>
+                    <p class="relative z-10 text-slate-400 font-normal text-sm leading-relaxed group-hover:text-white transition-colors">Truy cập nhanh các biểu ghi nhận dữ liệu và sản lượng CCVL.</p>
                 </a>
 
                 <!-- CỔNG 4: GIẢI TRÌNH CCVL -->
-                <a href="https://docs.google.com/spreadsheets/d/1Gy1dMiSkyTACtj765kATRwQ1FXyiBX-IxvOzmzJWDHw/edit?usp=sharing" target="_blank" class="spatial-card group p-10 md:p-12 rounded-[3.5rem] relative overflow-hidden">
-                    <div class="absolute top-0 right-0 p-12 opacity-20 group-hover:opacity-100 group-hover:translate-x-2 group-hover:-translate-y-2 transition-all duration-500 z-20">
-                        <i data-lucide="arrow-up-right" class="w-10 h-10 text-fuchsia-500"></i>
+                <a href="https://docs.google.com/spreadsheets/d/1Gy1dMiSkyTACtj765kATRwQ1FXyiBX-IxvOzmzJWDHw/edit?usp=sharing" target="_blank" class="spatial-card group p-6 md:p-8 rounded-[2rem] relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-500 z-20">
+                        <i data-lucide="arrow-up-right" class="w-6 h-6 text-fuchsia-500"></i>
                     </div>
                     
-                    <!-- Vệt sáng Góc dưới phải -->
-                    <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-fuchsia-500/20 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
-                    <!-- Vệt sáng Góc trên trái -->
-                    <div class="absolute -top-20 -left-20 w-64 h-64 bg-fuchsia-500/20 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
+                    <!-- Vệt sáng -->
+                    <div class="absolute -bottom-16 -right-16 w-48 h-48 bg-fuchsia-500/20 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
+                    <div class="absolute -top-16 -left-16 w-48 h-48 bg-fuchsia-500/20 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
 
-                    <div class="relative z-10 w-20 h-20 rounded-[2rem] bg-fuchsia-500/20 border border-fuchsia-400/30 flex items-center justify-center mb-10 group-hover:scale-110 transition-transform duration-700 shadow-[inset_0_0_20px_rgba(232,121,249,0.2)]">
-                        <i data-lucide="sparkles" class="w-10 h-10 text-fuchsia-400 icon-glow-fuchsia"></i>
+                    <div class="relative z-10 w-14 h-14 rounded-2xl bg-fuchsia-500/20 border border-fuchsia-400/30 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-700 shadow-[inset_0_0_20px_rgba(232,121,249,0.2)]">
+                        <i data-lucide="sparkles" class="w-7 h-7 text-fuchsia-400 icon-glow-fuchsia"></i>
                     </div>
-                    <h3 class="relative z-10 text-3xl font-bold text-white mb-4 tracking-wide group-hover:text-fuchsia-400 transition-colors">GIẢI TRÌNH CCVL</h3>
-                    <p class="relative z-10 text-slate-400 font-normal text-lg leading-relaxed group-hover:text-white transition-colors">Biểu ghi nhận & giải trình các vấn đề phát sinh trong công đoạn CCVL.</p>
+                    <h3 class="relative z-10 text-xl font-bold text-white mb-2 tracking-wide group-hover:text-fuchsia-400 transition-colors">GIẢI TRÌNH CCVL</h3>
+                    <p class="relative z-10 text-slate-400 font-normal text-sm leading-relaxed group-hover:text-white transition-colors">Biểu ghi nhận & giải trình các vấn đề phát sinh trong công đoạn CCVL.</p>
                 </a>
 
-                <!-- CỔNG 5: HƯỚNG DẪN CÔNG NGHỆ (Span full 2 cột) -->
-                <a href="https://drive.google.com/drive/folders/10QPukkdvOz2zybUfnsM7n64OiT0ascqz?usp=sharing" target="_blank" class="spatial-card group p-10 md:p-12 rounded-[3.5rem] relative overflow-hidden md:col-span-2">
-                    <div class="absolute top-0 right-0 p-12 opacity-20 group-hover:opacity-100 group-hover:translate-x-2 group-hover:-translate-y-2 transition-all duration-500 z-20">
-                        <i data-lucide="arrow-up-right" class="w-10 h-10 text-blue-400"></i>
+                <!-- CỔNG 5: HƯỚNG DẪN CÔNG NGHỆ -->
+                <a href="https://drive.google.com/drive/folders/10QPukkdvOz2zybUfnsM7n64OiT0ascqz?usp=sharing" target="_blank" class="spatial-card group p-6 md:p-8 rounded-[2rem] relative overflow-hidden md:col-span-2">
+                    <div class="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-500 z-20">
+                        <i data-lucide="arrow-up-right" class="w-6 h-6 text-blue-400"></i>
                     </div>
                     
-                    <!-- Vệt sáng Góc dưới phải -->
-                    <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-blue-500/20 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
-                    <!-- Vệt sáng Góc trên trái -->
-                    <div class="absolute -top-20 -left-20 w-64 h-64 bg-blue-500/20 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
+                    <!-- Vệt sáng -->
+                    <div class="absolute -bottom-16 -right-16 w-48 h-48 bg-blue-500/20 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
+                    <div class="absolute -top-16 -left-16 w-48 h-48 bg-blue-500/20 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
 
-                    <div class="relative z-10 w-20 h-20 rounded-[2rem] bg-blue-500/20 border border-blue-400/30 flex items-center justify-center mb-10 group-hover:scale-110 transition-transform duration-700 shadow-[inset_0_0_20px_rgba(59,130,246,0.2)]">
-                        <i data-lucide="book-open" class="w-10 h-10 text-blue-400 icon-glow-blue"></i>
+                    <div class="relative z-10 w-14 h-14 rounded-2xl bg-blue-500/20 border border-blue-400/30 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-700 shadow-[inset_0_0_20px_rgba(59,130,246,0.2)]">
+                        <i data-lucide="book-open" class="w-7 h-7 text-blue-400 icon-glow-blue"></i>
                     </div>
-                    <h3 class="relative z-10 text-3xl font-bold text-white mb-4 tracking-wide group-hover:text-blue-400 transition-colors">HƯỚNG DẪN CÔNG NGHỆ</h3>
-                    <p class="relative z-10 text-slate-400 font-normal text-lg leading-relaxed group-hover:text-white transition-colors md:max-w-3xl">Hướng dẫn chung & thông số kỹ thuật ngành Trung thế & Hạ thế.</p>
+                    <h3 class="relative z-10 text-xl font-bold text-white mb-2 tracking-wide group-hover:text-blue-400 transition-colors">HƯỚNG DẪN CÔNG NGHỆ</h3>
+                    <p class="relative z-10 text-slate-400 font-normal text-sm leading-relaxed group-hover:text-white transition-colors">Hướng dẫn chung & thông số kỹ thuật ngành Trung thế & Hạ thế.</p>
                 </a>
 
             </div>
@@ -207,8 +201,8 @@
         </main>
 
         <!-- FOOTER -->
-        <footer class="py-10 border-t border-white/[0.05] flex justify-center opacity-60">
-            <p class="text-[11px] font-bold font-mono tracking-[0.4em] text-slate-500 uppercase">© 2026 NGÀNH TRUNG THẾ | PREMIUM SPATIAL WORKSPACE</p>
+        <footer class="py-6 border-t border-white/[0.05] flex justify-center opacity-60">
+            <p class="text-[10px] font-bold font-mono tracking-[0.4em] text-slate-500 uppercase">© 2026 NGÀNH TRUNG THẾ | PREMIUM SPATIAL WORKSPACE</p>
         </footer>
 
     </div>
