@@ -26,7 +26,7 @@
             to { transform: translateY(0); opacity: 1; }
         }
 
-        /* Hiệu ứng kính mờ không gian ĐẬM ĐẶC (Enhanced Spatial Glass) */
+        /* Hiệu ứng kính mờ không gian ĐẬM ĐẶC */
         .spatial-card {
             background: rgba(10, 12, 18, 0.85);
             backdrop-filter: blur(40px) saturate(200%);
@@ -41,7 +41,7 @@
             box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
         }
 
-        /* Nhuộm đen thanh cuộn */
+        /* Thanh cuộn */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #010205; }
         ::-webkit-scrollbar-thumb {
@@ -55,34 +55,49 @@
         .custom-scrollbar::-webkit-scrollbar-thumb { background-color: rgba(255, 255, 255, 0.1); border-radius: 9999px; }
         .custom-scrollbar:hover::-webkit-scrollbar-thumb { background-color: rgba(255, 255, 255, 0.2); }
 
-        /* Hiệu ứng hào quang cho Icon */
+        /* Hào quang Icon */
         .icon-glow-cyan { filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.6)); }
         .icon-glow-amber { filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.6)); }
         .icon-glow-emerald { filter: drop-shadow(0 0 10px rgba(52, 211, 153, 0.6)); }
         .icon-glow-fuchsia { filter: drop-shadow(0 0 10px rgba(232, 121, 249, 0.6)); }
         .icon-glow-blue { filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.6)); }
         .icon-glow-rose { filter: drop-shadow(0 0 10px rgba(244, 63, 94, 0.6)); }
+
+        /* ===== HIỆU ỨNG LOGO ===== */
+        @keyframes logo-glow-pulse {
+            0%, 100% {
+                filter: drop-shadow(0 0 6px rgba(255,255,255,0.4));
+                transform: scale(1);
+            }
+            50% {
+                filter: drop-shadow(0 0 18px rgba(255,255,255,0.8));
+                transform: scale(1.05);
+            }
+        }
+        .logo-wrapper {
+            animation: logo-glow-pulse 3s ease-in-out infinite;
+        }
+        /* Thay đổi logo thật: chỉ cần thay src bên dưới */
     </style>
 </head>
 <body class="min-h-screen bg-[#010205] text-slate-200 font-sans relative overflow-x-hidden selection:bg-white/10 flex flex-col">
 
     <!-- 1. MÔI TRƯỜNG KHÔNG GIAN (SPATIAL ENVIRONMENT) -->
     <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden flex items-center justify-center">
-        <!-- Tăng độ sáng cho các khối màu nền (Glow Orbs) -->
         <div class="absolute top-[5%] left-[5%] w-[70vw] h-[70vw] rounded-full bg-indigo-600/20 blur-[130px] mix-blend-screen animate-[pulse_8s_ease-in-out_infinite]"></div>
         <div class="absolute bottom-[0%] right-[0%] w-[60vw] h-[60vw] rounded-full bg-blue-600/20 blur-[150px] mix-blend-screen animate-[pulse_12s_ease-in-out_infinite_alternate]"></div>
-        
-        <!-- Lưới tọa độ rõ hơn một chút -->
         <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]"></div>
     </div>
 
     <div class="relative z-10 max-w-[1200px] mx-auto px-6 md:px-12 flex flex-col min-h-screen w-full">
         
-        <!-- 2. TOP BAR -->
+        <!-- 2. TOP BAR (ĐÃ THÊM LOGO) -->
         <header class="py-6 flex justify-between items-center w-full mb-2 animate-in fade-in slide-in-top">
             <div class="flex items-center gap-3 group cursor-pointer">
-                <div class="w-10 h-10 rounded-full bg-white/[0.05] border border-white/[0.1] flex items-center justify-center group-hover:bg-white/[0.15] transition-all shadow-[0_0_20px_rgba(255,255,255,0.02)]">
-                    <i data-lucide="waves" class="w-5 h-5 text-white"></i>
+                <!-- LOGO CÔNG TY – THAY src BẰNG LOGO THẬT -->
+                <div class="w-10 h-10 rounded-full bg-white/[0.05] border border-white/[0.1] flex items-center justify-center overflow-hidden logo-wrapper shadow-[0_0_20px_rgba(255,255,255,0.05)]">
+                    <img src="logo.png" alt="Logo" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+                    <i data-lucide="waves" class="w-5 h-5 text-white hidden"></i> <!-- fallback nếu ảnh lỗi -->
                 </div>
                 <div>
                     <h1 class="text-sm font-black tracking-[0.25em] text-white uppercase leading-none">Ngành Trung Thế</h1>
@@ -119,7 +134,7 @@
                     </div>
                 </div>
 
-                <!-- 4. LƯỚI 6 CỔNG TRUY CẬP (Chia 3 cột cân xứng hoàn hảo) -->
+                <!-- 4. LƯỚI 6 CỔNG TRUY CẬP -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-full max-w-6xl mx-auto animate-in fade-in slide-in-bottom" style="animation-delay: 400ms;">
                     
                     <!-- CỔNG 1: BIỂU NHẬP LIỆU KÉO XOẮN -->
@@ -210,7 +225,7 @@
                         </div>
                     </a>
 
-                    <!-- CỔNG 5: HƯỚNG DẪN CÔNG NGHỆ (Chuyển thành Cổng Thư Mục) -->
+                    <!-- CỔNG 5: HƯỚNG DẪN CÔNG NGHỆ -->
                     <button onclick="openDetail('huong-dan')" class="vision-container group relative text-left outline-none block w-full" style="perspective: 1200px;">
                         <div class="vision-card relative h-full bg-slate-900/60 group-hover:bg-slate-800/80 border border-white/[0.08] group-hover:border-white/[0.3] backdrop-blur-[60px] backdrop-saturate-[150%] rounded-[2rem] p-6 md:p-8 overflow-hidden flex flex-col" style="transform-style: preserve-3d; transition: background-color 0.5s, border-color 0.5s, box-shadow 0.5s, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
                             
@@ -232,7 +247,7 @@
                         </div>
                     </button>
 
-                    <!-- CỔNG 6: KIỂM SOÁT QUÁ TRÌNH (Cổng Thư Mục) -->
+                    <!-- CỔNG 6: REVIEW KIỂM SOÁT QUÁ TRÌNH -->
                     <button onclick="openDetail('kiem-soat')" class="vision-container group relative text-left outline-none block w-full" style="perspective: 1200px;">
                         <div class="vision-card relative h-full bg-slate-900/60 group-hover:bg-slate-800/80 border border-white/[0.08] group-hover:border-white/[0.3] backdrop-blur-[60px] backdrop-saturate-[150%] rounded-[2rem] p-6 md:p-8 overflow-hidden flex flex-col" style="transform-style: preserve-3d; transition: background-color 0.5s, border-color 0.5s, box-shadow 0.5s, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
                             
@@ -248,8 +263,8 @@
                             </div>
                             
                             <div class="relative z-10 mt-auto" style="transform: translateZ(25px);">
-                                <h3 class="text-xl font-bold text-white/90 mb-2 tracking-wide group-hover:text-rose-400 transition-colors">KIỂM SOÁT QUÁ TRÌNH</h3>
-                                <p class="text-slate-400 font-normal text-sm leading-relaxed group-hover:text-white transition-colors">Theo dõi và kiểm soát các thông số kỹ thuật, quy trình chạy máy.</p>
+                                <h3 class="text-xl font-bold text-white/90 mb-2 tracking-wide group-hover:text-rose-400 transition-colors">REVIEW KIỂM SOÁT QUÁ TRÌNH</h3>
+                                <p class="text-slate-400 font-normal text-sm leading-relaxed group-hover:text-white transition-colors">Xem lại các phiếu kiểm soát các thông số kỹ thuật, quy trình chạy máy.</p>
                             </div>
                         </div>
                     </button>
@@ -257,9 +272,9 @@
                 </div>
             </div>
 
-            <!-- 5. MÀN HÌNH CHI TIẾT BÊN TRONG (SPLIT-PANE HOLOGRAPHIC) -->
+            <!-- 5. MÀN HÌNH CHI TIẾT BÊN TRONG -->
             <div id="detail-view" class="transition-all duration-700 ease-in-out absolute inset-x-0 opacity-0 scale-105 pointer-events-none z-50">
-                <!-- Nội dung chi tiết sẽ được render bằng JS ở đây -->
+                <!-- JS sẽ render -->
             </div>
 
         </main>
@@ -290,10 +305,10 @@
         setInterval(updateClock, 1000);
         updateClock();
 
-        // Data Cổng Thư Mục (Đã được cấu trúc lại để hỗ trợ nhiều thư mục)
+        // Data Cổng Thư Mục (Bản mới nhất)
         const CATEGORY_DATA = {
             'kiem-soat': {
-                title: 'KIỂM SOÁT QUÁ TRÌNH',
+                title: 'XEM PHIẾU KIỂM SOÁT QUÁ TRÌNH',
                 desc: 'Theo dõi và kiểm soát các thông số kỹ thuật, quy trình chạy máy.',
                 iconName: 'clipboard-check',
                 iconColor: 'text-rose-400',
@@ -306,12 +321,14 @@
                     fileGlow: 'bg-rose-500/20'
                 },
                 files: [
-                    { name: 'Phiếu KSQT Máy Bọc 150-1', note: 'Kiểm soát thông số vận hành máy bọc 150-1', url: 'https://docs.google.com/forms/d/e/1FAIpQLSel9SLhLviNwi1f1wFDDaKobLIJU9-vZvYMThE9Z2flSWBhNg/viewform' },
-                    { name: 'Phiếu KSQT Máy KÉO', note: 'Kiểm soát thông số vận hành máy kéo', url: 'https://forms.gle/NhLWyFatdVttcNKe6' },
-                    { name: 'Phiếu KSQT Máy 61S', note: 'Kiểm soát thông số vận hành máy 61S', url: '#' },
-                    { name: 'Phiếu KSQT Máy GB2', note: 'Kiểm soát thông số vận hành máy GB2', url: '#' },
-                    { name: 'Phiếu KSQT Máy GB3', note: 'Kiểm soát thông số vận hành máy GB3', url: '#' },
-                    { name: 'Phiếu KSQT DRUM', note: 'Kiểm soát thông số vận hành máy DRUM', url: '#' }
+                    { name: 'Phiếu KSQT Máy Bọc 150-1', note: 'Xem lại phiếu kiểm soát thông số vận hành máy bọc 150-1', url: 'https://docs.google.com/spreadsheets/d/1ltS0QZ1-bm_BdDQnxoO8qc1Lelj_BpO_QnPwVyN2fW4/preview#gid=2065791571' },
+                    { name: 'Phiếu KSQT Máy Bọc 150-2', note: 'Xem lại phiếu kiểm soát thông số vận hành máy bọc 150-2', url: 'https://docs.google.com/spreadsheets/d/16a57NXGUmgi6vuwN_TGTIG0RVFEtsmHlph5gS_xV-8I/preview#gid=296184894' },
+                    { name: 'Phiếu KSQT Máy LHD450/13', note: 'Xem lại phiếu kiểm soát thông số vận hành máy kéo', url: 'https://docs.google.com/spreadsheets/d/1O9hVm6Upyf6qNejQzJbf6Uz1sEEBdpU0p0Yl2OnAaCg/preview#gid=933199609' },
+                    { name: 'Phiếu KSQT Máy 61S', note: 'Xem lại phiếu kiểm soát thông số vận hành máy 61S', url: 'https://docs.google.com/spreadsheets/d/1HuQ-hMnQRVXkjMK1nX3pUvPhI-2TubBs9myoaEjHAn4/preview#gid=1047664569' },
+                    { name: 'Phiếu KSQT Máy GB2', note: 'Xem lại phiếu kiểm soát thông số vận hành máy GB2', url: 'https://docs.google.com/spreadsheets/d/17XdxCF35a-lV_Hnho18c5LA0kfS2sdzZ6NxB3tSuK1A/preview#gid=2078578605' },
+                    { name: 'Phiếu KSQT Máy GB3', note: 'Xem lại phiếu kiểm soát thông số vận hành máy GB3', url: 'https://docs.google.com/spreadsheets/d/1LE0awtyCytLb5DKwauWtqKeoqwS4wVAn78yu0JVMFbY/preview#gid=27457545' },
+                    { name: 'Phiếu KSQT DRUM GIÁP SỢI', note: 'Xem lại phiếu kiểm soát thông số vận hành máy DRUM giáp sợi', url: 'https://docs.google.com/spreadsheets/d/1TTrEYWA_GeuTo01L3ZBa0K5e-zqtrN7pSavX8wsQ5nY/preview#gid=797089217' },
+                    { name: 'Phiếu KSQT DRUM XOẮN NHÓM', note: 'Xem lại phiếu kiểm soát thông số vận hành máy DRUM xoắn nhóm', url: 'https://docs.google.com/spreadsheets/d/122nWlVpHPbSkf6UiM9cg00LmQY7EfbYsRizcWWE7odI/preview#gid=633773272' }
                 ]
             },
             'huong-dan': {
@@ -340,11 +357,11 @@
         const detailView = document.getElementById('detail-view');
         let heightTimeout;
 
-        // Script chính tạo độ nghiêng 3D và Cực quang theo chuột
+        // Script 3D và Cực quang
         window.initVisionProEffect = function() {
             const containers = document.querySelectorAll('.vision-container:not(.vision-init)');
             containers.forEach(container => {
-                container.classList.add('vision-init'); // Tránh lặp sự kiện
+                container.classList.add('vision-init');
                 const card = container.querySelector('.vision-card');
                 const orb = container.querySelector('.glow-orb');
                 if(!card) return;
@@ -357,16 +374,13 @@
                     const centerX = rect.width / 2;
                     const centerY = rect.height / 2;
                     
-                    // Tính góc nghiêng (Tối đa 6 độ)
                     const rotateX = ((y - centerY) / centerY) * -6; 
                     const rotateY = ((x - centerX) / centerX) * 6;
                     
-                    // Phản hồi lập tức
                     card.style.transition = 'transform 0.1s ease-out, box-shadow 0.1s ease-out';
                     card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
                     card.style.boxShadow = `0 30px 60px rgba(0,0,0,0.8)`;
                     
-                    // Cực quang tracking chuột
                     if(orb) {
                         orb.style.transition = 'opacity 0.3s ease-out';
                         orb.style.opacity = '0.8';
@@ -375,7 +389,6 @@
                 });
                 
                 container.addEventListener('mouseleave', () => {
-                    // Trả về vị trí cũ cực êm ái
                     card.style.transition = 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.6s ease-out';
                     card.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
                     card.style.boxShadow = `0 10px 30px rgba(0,0,0,0.2)`;
@@ -389,10 +402,8 @@
             });
         };
 
-        // Chạy khởi tạo 3D cho giao diện Home
         initVisionProEffect();
 
-        // Mở Màn hình Chi Tiết
         window.openDetail = function(categoryId) {
             const data = CATEGORY_DATA[categoryId];
             if (!data) return;
@@ -403,7 +414,6 @@
             
             window.scrollTo(0, 0);
 
-            // Render Các File Chi Tiết Tự Động Theo Dữ Liệu
             let filesHTML = '';
             data.files.forEach(file => {
                 filesHTML += `
@@ -444,7 +454,6 @@
             detailView.innerHTML = `
                 <div class="w-full h-[80vh] max-h-[700px] flex flex-col lg:flex-row gap-5 relative animate-in fade-in zoom-in-95 duration-700">
                     
-                    <!-- BẢNG TRÁI -->
                     <div class="w-full lg:w-[38%] h-full rounded-[2.5rem] bg-[#0B101E]/80 backdrop-blur-[80px] backdrop-saturate-[200%] border border-white/[0.1] p-8 flex flex-col relative overflow-hidden shadow-[0_0_80px_rgba(0,0,0,0.5)]">
                         <div class="absolute top-0 left-0 w-[150%] h-[150%] -translate-x-[20%] -translate-y-[20%] bg-gradient-to-br ${data.colors.glow} opacity-60 pointer-events-none"></div>
                         <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:32px_32px] opacity-60"></div>
@@ -481,7 +490,6 @@
                         </div>
                     </div>
 
-                    <!-- BẢNG PHẢI -->
                     <div class="w-full lg:w-[62%] h-full rounded-[2.5rem] bg-[#0B101E]/60 backdrop-blur-[30px] border border-white/[0.08] p-4 lg:p-5 flex flex-col relative shadow-[0_0_50px_rgba(0,0,0,0.3)]">
                         <div class="px-6 py-4 flex items-center justify-between border-b border-white/[0.08] shrink-0">
                             <span class="text-xs font-bold tracking-[0.2em] text-slate-300 uppercase">Tài Liệu Chi Tiết</span>
@@ -502,7 +510,7 @@
             detailView.classList.remove('opacity-0', 'scale-105', 'pointer-events-none', 'absolute', 'inset-x-0');
             detailView.classList.add('opacity-100', 'scale-100', 'relative');
             
-            initVisionProEffect(); // Gắn hiệu ứng 3D cho list
+            initVisionProEffect();
             
             heightTimeout = setTimeout(() => {
                 mainEl.style.height = 'auto';
@@ -526,7 +534,6 @@
                 mainEl.style.height = 'auto';
             }, 1000);
         };
-
     </script>
 </body>
 </html>
